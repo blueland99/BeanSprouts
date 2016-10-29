@@ -2,4 +2,5 @@
     <string name="app_name">BeanSprouts</string>
     <string name="main_but_1">게임시작</string>
     <string name="main_but_2">음식도감</string>
+    <string name="temp">비었음</string>
 </resources>

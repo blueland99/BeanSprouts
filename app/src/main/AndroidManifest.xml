@@ -23,10 +23,14 @@
 
         </activity>
 
-        <!-- main 액티비티 -->
+        <!-- MainActivity -->
         <activity android:name=".MainActivity">
-
         </activity>
+
+        <!-- GameActivity -->
+        <activity android:name=".GameActivity">
+        </activity>
+
     </application>
 
 </manifest>

@@ -13,13 +13,13 @@
     android:gravity="center"
     >
     <Button
-        android:id="@+id/gameStart"
+        android:id="@+id/game_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_but_1"
         />
     <Button
-        android:id="@+id/collect"
+        android:id="@+id/cook_collect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_but_2"
