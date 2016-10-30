@@ -31,6 +31,10 @@
         <activity android:name=".GameActivity">
         </activity>
 
+        <!-- PlayActivity -->
+        <activity android:name=".PlayActivity">
+        </activity>
+
     </application>
 
 </manifest>
