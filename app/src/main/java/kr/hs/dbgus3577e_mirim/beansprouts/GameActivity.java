@@ -9,48 +9,60 @@ import android.widget.ImageView;
 
 public class GameActivity extends Activity {
     // ImageView 배열 생성
-    int max = 5;
-    ImageView step[] = new ImageView[max];
+    int level = 2;
+    ImageView step[] = new ImageView[level];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        step[1] = (ImageView) findViewById(R.id.step1);
-        step[2] = (ImageView) findViewById(R.id.step2);
-        step[3] = (ImageView) findViewById(R.id.step3);
-
-        step[1].setImageResource(R.drawable.step1);
-        step[2].setImageResource(R.drawable.step2);
-        step[3].setImageResource(R.drawable.step3);
-
-        /*        for (int i = 1; i < max; i++) {
-            step[i] = (ImageView) findViewById(R.id.step + i);
+        for (int i = 0; i < level; i++) {
+            step[i] = (ImageView) findViewById(R.id.step1 + i);
+            step[i].setOnClickListener(imgVHandler);
         }
-        for (int i = 1; i < max; i++) {
-            step[i].setBackgroundResource(R.drawable.step + i);
-        }*/
-        step[1].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
-                startActivity(intent);
-            }
-        });
-        step[2].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
-                startActivity(intent);
-            }
-        });
-        step[3].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
-                startActivity(intent);
-            }
-        });
+        for (int i = 0; i < level; i++) {
+            step[i].setImageResource(R.drawable.step1+i);
+        }
+
     }
+
+    View.OnClickListener imgVHandler=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
+            int level=0;
+            switch (v.getId()){
+                case R.id.step1:
+                    level = 1;
+                    break;
+                case R.id.step2:
+                    level = 2;
+                    break;
+                case R.id.step3:
+                    level = 3;
+                    break;
+                case R.id.step4:
+                    level = 4;
+                    break;
+                case R.id.step5:
+                    level = 5;
+                    break;
+                case R.id.step6:
+                    level = 6;
+                    break;
+                case R.id.step7:
+                    level = 7;
+                    break;
+                case R.id.step8:
+                    level = 8;
+                    break;
+                case R.id.step9:
+                    level = 9;
+                    break;
+            }
+            intent.putExtra("level",level);
+            startActivity(intent);
+        }
+    };
 }

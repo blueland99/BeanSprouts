@@ -22,7 +22,7 @@
                 android:id="@+id/step1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
                 android:id="@+id/step2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
                 android:id="@+id/step3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -85,12 +85,12 @@
                 android:id="@+id/step4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/temp"
+                android:src="@drawable/lock"
                 />
         </LinearLayout>
         <LinearLayout
@@ -104,7 +104,7 @@
                 android:id="@+id/step5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -123,7 +123,7 @@
                 android:id="@+id/step6"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -148,7 +148,7 @@
                 android:id="@+id/step7"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -167,7 +167,7 @@
                 android:id="@+id/step8"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -186,7 +186,7 @@
                 android:id="@+id/step9"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp"
+                android:src="@drawable/lock"
                 />
             <TextView
                 android:layout_width="wrap_content"
