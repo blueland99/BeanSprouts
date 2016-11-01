@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 public class GameActivity extends Activity {
     // ImageView 배열 생성
-    int level = 2;
+    int level = 5;
     ImageView step[] = new ImageView[level];
 
     @Override

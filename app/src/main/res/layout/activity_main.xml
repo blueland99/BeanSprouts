@@ -12,16 +12,26 @@
     android:orientation="vertical"
     android:gravity="center"
     >
-    <Button
-        android:id="@+id/game_start"
+    <LinearLayout
+        android:layout_weight="7"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_but_1"
-        />
-    <Button
-        android:id="@+id/cook_collect"
+        android:layout_height="wrap_content">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_but_2"
-        />
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/game_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_but_1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </LinearLayout>
+
 </LinearLayout>
