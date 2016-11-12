@@ -41,6 +41,14 @@
         <activity android:name=".PlayActivity">
         </activity>
 
+        <!-- CollectActivity -->
+        <activity android:name=".CollectActivity">
+        </activity>
+
+        <!-- ImageActivity -->
+        <activity android:name=".ImageActivity">
+        </activity>
+
     </application>
 
 </manifest>

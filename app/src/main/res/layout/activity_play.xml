@@ -3,19 +3,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/black"
     >
-        <TextView
-            android:gravity="right"
-            android:id="@+id/tscore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="score:      "
-            />
+
     <FrameLayout
+        android:layout_weight="1"
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
     </FrameLayout>
+    <LinearLayout
+        android:layout_weight="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/score"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="17pt"
+            android:text="score  "
+            android:gravity="right"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_weight="1"
+            android:text="0"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:id="@+id/tscore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="17pt"
+            />
+    </LinearLayout>
 
 </LinearLayout>

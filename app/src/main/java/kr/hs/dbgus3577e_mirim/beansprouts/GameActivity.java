@@ -17,9 +17,10 @@ public class GameActivity extends Activity {
     //  level은 올렸다 내려오기
 
     String dirPath;
-    int levelMax = 9;
+    int max = 12;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -54,7 +55,6 @@ public class GameActivity extends Activity {
         String name = "BeanSproutsLevel.txt";
         String loadPath = dirPath + "/" + name;
         Log.v(null, "fileName : " + name);
-        Toast.makeText(this, loadPath, Toast.LENGTH_SHORT).show();
         try {
             FileReader fr = new FileReader(loadPath);
             BufferedReader br = new BufferedReader(fr);
@@ -62,21 +62,28 @@ public class GameActivity extends Activity {
             while ((temp = br.readLine()) != null) {
                 levelStr = levelStr + temp;
             }
-            Toast.makeText(this, levelStr, Toast.LENGTH_SHORT).show();
             Log.v(null, "" + levelStr);
         } catch (Exception e) {
             Toast.makeText(this, "안들어옴", Toast.LENGTH_SHORT).show();
         }
 
+        //super.onResume();
         int level = Integer.parseInt(levelStr);
+        if (level == (max+1)){
+            level--;
+        }
 
         ImageView step[] = new ImageView[level];
         for (int i = 0; i < level; i++) {
-            step[i] = (ImageView) findViewById(R.id.step1 + i);
-            step[i].setOnClickListener(imgVHandler);
+            if (level != (max+1)) {
+                step[i] = (ImageView) findViewById(R.id.step01 + i);
+                step[i].setOnClickListener(imgVHandler);
+            }
         }
         for (int i = 0; i < level; i++) {
-            step[i].setImageResource(R.drawable.step1 + i);
+            if (level != (max+1)) {
+                step[i].setImageResource(R.drawable.heart);
+            }
         }
     }
 
@@ -86,36 +93,46 @@ public class GameActivity extends Activity {
             Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
             int level=0;
             switch (v.getId()){
-                case R.id.step1:
+                case R.id.step01:
                     level = 1;
                     break;
-                case R.id.step2:
+                case R.id.step02:
                     level = 2;
                     break;
-                case R.id.step3:
+                case R.id.step03:
                     level = 3;
                     break;
-                case R.id.step4:
+                case R.id.step04:
                     level = 4;
                     break;
-                case R.id.step5:
+                case R.id.step05:
                     level = 5;
                     break;
-                case R.id.step6:
+                case R.id.step06:
                     level = 6;
                     break;
-                case R.id.step7:
+                case R.id.step07:
                     level = 7;
                     break;
-                case R.id.step8:
+                case R.id.step08:
                     level = 8;
                     break;
-                case R.id.step9:
+                case R.id.step09:
                     level = 9;
+                    break;
+                case R.id.step10:
+                    level = 10;
+                    break;
+                case R.id.step11:
+                    level = 11;
+                    break;
+                case R.id.step12:
+                    level = 12;
                     break;
             }
             intent.putExtra("level",level);
             startActivity(intent);
+            finish();
         }
     };
 }
