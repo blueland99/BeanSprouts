@@ -4,6 +4,6 @@
         android:state_pressed="true"
         android:drawable="@drawable/reset2"/>
     <item
-        android:drawable="@drawable/reset"/>
+        android:drawable="@drawable/reset1"/>
 
 </selector>

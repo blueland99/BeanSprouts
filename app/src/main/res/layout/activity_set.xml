@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <ImageButton
+            android:background="@drawable/volume_up_but"
+            android:layout_gravity="center"
+            android:id="@+id/volume_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="켜기"
+            />
+        <ImageButton
+            android:background="@drawable/volume_down_but"
+            android:layout_gravity="center"
+            android:id="@+id/volume_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="끄기"
+            />
+        <ImageButton
+            android:background="@drawable/reset_but"
+            android:layout_gravity="center"
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="리셋"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

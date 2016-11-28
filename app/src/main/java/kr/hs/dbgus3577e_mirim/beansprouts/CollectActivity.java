@@ -43,9 +43,7 @@ public class CollectActivity extends Activity {
             for (int i = 0; i < img - 1; i++) {
                 image[i] = (ImageView) findViewById(R.id.image01 + i);
                 image[i].setOnClickListener(imgHandler);
-            }
-            for (int i = 0; i < img - 1; i++) {
-                image[i].setImageResource(R.drawable.pink_heart);
+                image[i].setImageResource(R.drawable.lock01 + i);
             }
         }
     }

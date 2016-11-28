@@ -35,7 +35,7 @@ public class GameActivity extends Activity {
             file.mkdirs();
             Toast.makeText(this, "새로운 디렉토리", Toast.LENGTH_SHORT).show();
         }
-        if (file.listFiles().length <= 0) {
+        if (file.listFiles().length <= 1) {
             // txt 파일 생성
             String text = "1";
             File savefile = new File(dirPath + "/BeanSproutsLevel.txt");
@@ -43,7 +43,6 @@ public class GameActivity extends Activity {
                 FileWriter fos = new FileWriter(savefile);
                 fos.write(text);
                 fos.close();
-                Toast.makeText(this, "txt 파일 생성", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
             }
         }
@@ -64,7 +63,6 @@ public class GameActivity extends Activity {
             }
             Log.v(null, "" + levelStr);
         } catch (Exception e) {
-            Toast.makeText(this, "안들어옴", Toast.LENGTH_SHORT).show();
         }
 
         //super.onResume();
@@ -75,16 +73,43 @@ public class GameActivity extends Activity {
 
         ImageView step[] = new ImageView[level];
         for (int i = 0; i < level; i++) {
-            if (level != (max+1)) {
+            if (level != (max + 1)) {
                 step[i] = (ImageView) findViewById(R.id.step01 + i);
                 step[i].setOnClickListener(imgVHandler);
+                step[i].setImageResource(R.drawable.lock01 + i);
             }
         }
-        for (int i = 0; i < level; i++) {
-            if (level != (max+1)) {
-                step[i].setImageResource(R.drawable.heart);
+
+
+
+
+        String clearTrue = "";
+        name = "BeanSproutsClear.txt";
+        loadPath = dirPath + "/" + name;
+        Log.v(null, "fileName : " + name);
+        try {
+            FileReader fr = new FileReader(loadPath);
+            BufferedReader br = new BufferedReader(fr);
+            String temp = "";
+            while ((temp = br.readLine()) != null) {
+                clearTrue = clearTrue + temp;
             }
+            Log.v(null, "" + clearTrue);
+        } catch (Exception e) {
         }
+
+        step[level-1].setImageResource(R.drawable.lock2);
+        if (clearTrue.equals("1")){
+            step[max-1] = (ImageView) findViewById(R.id.step12);
+            step[max-1].setImageResource(R.drawable.lock12);
+        }
+
+
+
+
+       // step[level-1].setImageResource(R.drawable.lock2);
+
+
     }
 
     View.OnClickListener imgVHandler=new View.OnClickListener() {
