@@ -1,19 +1,15 @@
 package kr.hs.dbgus3577e_mirim.beansprouts;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
-import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,22 +30,40 @@ public class MainActivity extends AppCompatActivity {
 
 
     ViewFlipper flipper, pa, ti;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // OnBackPressedDispatcher에 콜백 추가
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                long tempTime = System.currentTimeMillis();
+                long intervalTime = tempTime - backPressedTime;
+
+                if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+                    stopService(new Intent(getApplicationContext(), ServiceClass.class));
+                    finish();
+                } else {
+                    backPressedTime = tempTime;
+                    Toast.makeText(getApplicationContext(), "한번 더 뒤로가기를 누르면 종료", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         dirPath = getFilesDir().getAbsolutePath() + "/beanSprouts";
 
-        flipper = (ViewFlipper)findViewById(R.id.main_flipper);
+        flipper = (ViewFlipper) findViewById(R.id.main_flipper);
         flipper.setFlipInterval(500);
         flipper.startFlipping();
 
-        pa = (ViewFlipper)findViewById(R.id.pa_flipper);
+        pa = (ViewFlipper) findViewById(R.id.pa_flipper);
         pa.setFlipInterval(500);
         pa.startFlipping();
 
-        ti = (ViewFlipper)findViewById(R.id.ti_flipper);
+        ti = (ViewFlipper) findViewById(R.id.ti_flipper);
         ti.setFlipInterval(500);
         ti.startFlipping();
         // -----
@@ -94,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
 
 //        bgm = MediaPlayer.create(this, R.raw.bgm);
 //        bgm.setLooping(true);
-        if (volume.equals("0")){
+        if (volume.equals("0")) {
             startService(new Intent(this, ServiceClass.class));
         }
 
-        imageButton = (ImageButton)findViewById(R.id.game_start);
+        imageButton = (ImageButton) findViewById(R.id.game_start);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        imageButton = (ImageButton)findViewById(R.id.game_collect);
+        imageButton = (ImageButton) findViewById(R.id.game_collect);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        imageButton = (ImageButton)findViewById(R.id.game_reset);
+        imageButton = (ImageButton) findViewById(R.id.game_reset);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,24 +137,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-
-
-    @Override
-    public void onBackPressed() {
-        long tempTime = System.currentTimeMillis();
-        long intervalTime = tempTime - backPressedTime;
-
-        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime)
-        {
-            stopService(new Intent(this, ServiceClass.class));
-            finish();
-        }
-        else
-        {
-            backPressedTime = tempTime;
-            Toast.makeText(this, "한번 더 뒤로가기를 누르면 종료", Toast.LENGTH_SHORT).show();
-        }
     }
 }

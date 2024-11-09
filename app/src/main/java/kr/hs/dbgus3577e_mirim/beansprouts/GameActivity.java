@@ -3,14 +3,16 @@ package kr.hs.dbgus3577e_mirim.beansprouts;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class GameActivity extends Activity {
     // ImageView 배열 생성
@@ -67,7 +69,7 @@ public class GameActivity extends Activity {
 
         //super.onResume();
         int level = Integer.parseInt(levelStr);
-        if (level == (max+1)){
+        if (level == (max + 1)) {
             level--;
         }
 
@@ -75,12 +77,11 @@ public class GameActivity extends Activity {
         for (int i = 0; i < level; i++) {
             if (level != (max + 1)) {
                 step[i] = (ImageView) findViewById(R.id.step01 + i);
+                step[i].setTag(i);
                 step[i].setOnClickListener(imgVHandler);
                 step[i].setImageResource(R.drawable.lock01 + i);
             }
         }
-
-
 
 
         String clearTrue = "";
@@ -98,64 +99,24 @@ public class GameActivity extends Activity {
         } catch (Exception e) {
         }
 
-        step[level-1].setImageResource(R.drawable.lock2);
-        if (clearTrue.equals("1")){
-            step[max-1] = (ImageView) findViewById(R.id.step12);
-            step[max-1].setImageResource(R.drawable.lock12);
+        step[level - 1].setImageResource(R.drawable.lock2);
+        if (clearTrue.equals("1")) {
+            step[max - 1] = (ImageView) findViewById(R.id.step12);
+            step[max - 1].setImageResource(R.drawable.lock12);
         }
 
 
-
-
-       // step[level-1].setImageResource(R.drawable.lock2);
+        // step[level-1].setImageResource(R.drawable.lock2);
 
 
     }
 
-    View.OnClickListener imgVHandler=new View.OnClickListener() {
+    View.OnClickListener imgVHandler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
-            int level=0;
-            switch (v.getId()){
-                case R.id.step01:
-                    level = 1;
-                    break;
-                case R.id.step02:
-                    level = 2;
-                    break;
-                case R.id.step03:
-                    level = 3;
-                    break;
-                case R.id.step04:
-                    level = 4;
-                    break;
-                case R.id.step05:
-                    level = 5;
-                    break;
-                case R.id.step06:
-                    level = 6;
-                    break;
-                case R.id.step07:
-                    level = 7;
-                    break;
-                case R.id.step08:
-                    level = 8;
-                    break;
-                case R.id.step09:
-                    level = 9;
-                    break;
-                case R.id.step10:
-                    level = 10;
-                    break;
-                case R.id.step11:
-                    level = 11;
-                    break;
-                case R.id.step12:
-                    level = 12;
-                    break;
-            }
-            intent.putExtra("level",level);
+            int level = Integer.parseInt(v.getTag().toString()) + 1;
+            intent.putExtra("level", level);
             startActivity(intent);
             finish();
         }
